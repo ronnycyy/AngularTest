@@ -1,0 +1,31 @@
+<!-- 根容器：整个站点的容器 -->
+<md-sidenav-container>
+  <!-- 侧边导航 默认情况下是长侧边滑出来-->
+  <!-- 侧滑的三种模式： over: 在主体上一层，主体变暗；push: 跟主体同一层，主体变暗；side：跟主体同一层 -->
+  <!-- align:end => 侧边栏在右边弹出 -->
+  <md-sidenav #sidenav mode="over" align="start">
+    <app-sidebar></app-sidebar>
+  </md-sidenav>
+
+  <!-- 
+    <md-sidenav #rightsidenav mode="over" align="end">
+      <app-sidebar></app-sidebar>
+    </md-sidenav>
+   -->
+  
+  <div class="site">
+    <header>
+      <app-header (toggle)="sidenav.toggle()"></app-header>
+    </header>
+    <main>
+      <!-- 
+        <button (click)="sidenav.toggle()">打开左侧边栏</button>
+        <button (click)="rightsidenav.open()">打开右侧边栏</button>
+       -->
+       <router-outlet></router-outlet>
+    </main>
+    <footer>
+      <app-footer></app-footer>
+    </footer>
+  </div>
+</md-sidenav-container>

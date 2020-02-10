@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body, app-root, md-sidenav-container, .site {   //将这几层填满屏幕
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.site {
+    display: flex;
+    flex-direction: column;  //纵向排列，将header和footer剩下的区域填满
+}
+
+main {
+    flex: 1;
+    // flex: 1 0 auto;  //第一个参数：是否放大，放大几倍；第二个参数： 是否缩小，缩小几倍；第三个参数：基线是多少
+    // display: flex;
+    // flex-direction: row;   //将main元素的子元素，在一行中排列
+    // flex-wrap: wrap;  //允许折行
+    // justify-content: flex-start;   //默认flex-start:左对齐，flex-end:右对齐，center:水平居中；space-around：除了该元素占的位置，剩下的位置平均分配；space-between:边紧靠着窗口的边
+    // align-content: flex-start;   //flex-end:底对齐；flex-start:顶对齐；center：垂直居中；
+    // align-items: center;   //在每一行上，它们几个元素在纵轴上怎么对齐
+}
+
+.full-width {
+    width: 100%;
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+}
+
+.fill-remaining-space {
+    // 使用flexbox 填充剩余空间
+    // @angular/material 中的很多控件使用了flex布局
+    flex: 1 1 auto;
+}
+
+// app-login {
+//     width: 100%;
+//     height: 100%;
+// }
