@@ -1,3 +1,8 @@
+// material不管卡片外的背景色，此处手动设置黑夜模式背景色
+md-sidenav-container.myapp-dark-theme {
+    background-color: black;
+}
+
 md-sidenav {
     width: 300px;
 }

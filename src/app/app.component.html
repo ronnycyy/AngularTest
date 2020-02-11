@@ -1,5 +1,6 @@
 <!-- 根容器：整个站点的容器 -->
-<md-sidenav-container>
+<!-- 如果darkTheme是true，则激活黑夜模式 -->
+<md-sidenav-container [class.myapp-dark-theme]="darkTheme">
   <!-- 侧边导航 默认情况下是长侧边滑出来-->
   <!-- 侧滑的三种模式： over: 在主体上一层，主体变暗；push: 跟主体同一层，主体变暗；side：跟主体同一层 -->
   <!-- align:end => 侧边栏在右边弹出 -->
@@ -15,7 +16,8 @@
   
   <div class="site">
     <header>
-      <app-header (toggle)="sidenav.toggle()"></app-header>
+      <!-- toggle处理侧边栏触发；toggleDarkTheme处理主题切换 -->
+      <app-header (toggle)="sidenav.toggle()" (toggleDarkTheme)="switchTheme($event)"></app-header>
     </header>
     <main>
       <!-- 

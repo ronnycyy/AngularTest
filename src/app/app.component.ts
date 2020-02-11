@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  darkTheme = false;
+
+  // 切换白天or黑夜模式
+  switchTheme(dark) {
+    this.darkTheme = dark;
+  }
 }
