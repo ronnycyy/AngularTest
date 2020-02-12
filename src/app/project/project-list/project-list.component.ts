@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { NewProjectComponent } from '../new-project/new-project.component';
+import { InviteComponent } from '../invite/invite.component';
 
 @Component({
   selector: 'app-project-list',
@@ -29,10 +30,13 @@ export class ProjectListComponent implements OnInit {
   ngOnInit() {
   }
 
-
   // 打开新建项目对话框
   openNewProjectDialog() {
     const dialogRef = this.dialog.open(NewProjectComponent, {data: {dark: true}});    // 重点！！！！ ProjectListComponent传递数据到NewProjectComponent
     dialogRef.afterClosed().subscribe(result => console.log(result));
+  }
+
+  lauchInviteDialog() {
+    const dialogRef = this.dialog.open(InviteComponent);   
   }
 }
