@@ -48,3 +48,7 @@ main {
 md-sidenav-container.myapp-dark-theme a {
     color: #607d8b;
 }
+
+md-sidenav-container.myapp-dark-theme a:active {
+    color: chocolate;
+}
