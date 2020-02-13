@@ -1,0 +1,18 @@
+<!-- tasklists 横向容器 -->
+<div class="tasklists">
+  <!-- 每个类别的任务列表 -->
+  <app-task-list
+    class="list-container"
+    *ngFor="let list of lists">
+    <app-task-header [header]="list.name"></app-task-header>
+    
+    <!-- 具体的一个任务 -->
+    <app-task-item
+      *ngFor="let task of list.tasks"
+      [item]="task"></app-task-item>
+  </app-task-list>
+</div>
+
+<button class="fab-button" md-fab type="button">
+  <md-icon>add</md-icon>
+</button>
