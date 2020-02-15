@@ -15,12 +15,19 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';     //有了shared模块之后，就不用单独导入一个个模块了
 
+// 导入路由模块
+import { AppRoutingModule } from '../app-routing.module';
+
+
+
+import 'hammerjs';
 
 @NgModule({
   imports: [
     HttpModule,
     SharedModule,
-    BrowserAnimationsModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     HeaderComponent, 
@@ -30,7 +37,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';     //有了shar
   exports: [
     HeaderComponent, 
     FooterComponent, 
-    SidebarComponent
+    SidebarComponent,
+    AppRoutingModule,    //AppModule中还需要路由模块，coreModule中需要带上
   ]
 })
 export class CoreModule {

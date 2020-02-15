@@ -7,7 +7,7 @@
 
   <!-- 新建任务 -->
   <div class="fill">
-    <button md-button>
+    <button md-button type="button" (click)="onNewTaskClick()">
       <md-icon>add_circle_outline</md-icon>
       <span>新任务</span>
     </button>
@@ -23,17 +23,17 @@
 
 <!-- 菜单列表 -->
 <md-menu #menu="mdMenu">
-  <button md-menu-item>
+  <button md-menu-item (click)="onEditListClick()">
     <md-icon>mode_edit</md-icon>
     <span>修改列表名称</span>
   </button>
 
-  <button md-menu-item>
+  <button md-menu-item (click)="onMoveAllClick()">
     <md-icon [svgIcon]="'move'" class="material-icon"></md-icon>
     <span>移动本列表所有内容</span>
   </button>
 
-  <button md-menu-item>
+  <button md-menu-item (click)="onDelListClick()">
     <md-icon>delete_forever</md-icon>
     <span>删除列表</span>
   </button>

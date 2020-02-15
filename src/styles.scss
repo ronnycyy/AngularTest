@@ -15,6 +15,14 @@ html, body, app-root, md-sidenav-container, .site {   //将这几层填满屏幕
 
 main {
     flex: 1;
+
+    // 第三章：触发器实验
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+
+
     // flex: 1 0 auto;  //第一个参数：是否放大，放大几倍；第二个参数： 是否缩小，缩小几倍；第三个参数：基线是多少
     // display: flex;
     // flex-direction: row;   //将main元素的子元素，在一行中排列
@@ -51,4 +59,10 @@ md-sidenav-container.myapp-dark-theme a {
 
 md-sidenav-container.myapp-dark-theme a:active {
     color: chocolate;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: black;
 }

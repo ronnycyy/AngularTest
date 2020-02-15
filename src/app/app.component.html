@@ -5,7 +5,7 @@
   <!-- 侧滑的三种模式： over: 在主体上一层，主体变暗；push: 跟主体同一层，主体变暗；side：跟主体同一层 -->
   <!-- align:end => 侧边栏在右边弹出 -->
   <md-sidenav #sidenav mode="over" align="start">
-    <app-sidebar></app-sidebar>
+    <app-sidebar (navClick)="sidenav.toggle()"></app-sidebar>
   </md-sidenav>
 
   <!-- 
@@ -25,8 +25,11 @@
         <button (click)="rightsidenav.open()">打开右侧边栏</button>
        -->
 
-       <!-- 路由页面： login页面 register页面 -->
+       <!-- 路由页面： login页面 register页面 等-->
        <router-outlet></router-outlet>
+
+       <!-- 实验：触发器的状态 -->
+       <!-- <div class="square" [@square]="squareState" (click)="onClick()"></div> -->
     </main>
     <footer>
       <app-footer></app-footer>

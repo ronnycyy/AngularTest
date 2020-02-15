@@ -4,15 +4,23 @@
   <app-task-list
     class="list-container"
     *ngFor="let list of lists">
-    <app-task-header [header]="list.name"></app-task-header>
+
+    <!-- 监听task-header组件发射出来的各种事件 -->
+    <app-task-header 
+    [header]="list.name"
+    (newTask)="launchNewTaskDialog()"
+    (moveAll)="launchCopyTaskDialog()"
+    (delList)="launchConfirmDialog()"
+    (onEditList)="launchEditListDialog()"></app-task-header>
     
     <!-- 具体的一个任务 -->
     <app-task-item
       *ngFor="let task of list.tasks"
-      [item]="task"></app-task-item>
+      [item]="task"
+      (taskClick)="launchUpdateTaskDialog(task)"></app-task-item>
   </app-task-list>
 </div>
 
-<button class="fab-button" md-fab type="button">
+<button class="fab-button" md-fab type="button" (click)="launchNewListDialog()">
   <md-icon>add</md-icon>
 </button>

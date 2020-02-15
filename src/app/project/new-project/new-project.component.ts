@@ -8,6 +8,8 @@ import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 })
 export class NewProjectComponent implements OnInit {
 
+  title = '';
+
   // 注入对话框的数据
   constructor(
     @Inject(MD_DIALOG_DATA) private data,  //上层组件传入数据
@@ -16,6 +18,7 @@ export class NewProjectComponent implements OnInit {
 
   ngOnInit() {
     console.log(JSON.stringify(this.data));
+    this.title = this.data.title;
   }
 
   onClick() {

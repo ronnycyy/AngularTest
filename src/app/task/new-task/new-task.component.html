@@ -1,0 +1,31 @@
+<!-- 弹出的 “新建任务” 对话框 -->
+<form>
+  <h2 md-dialog-title>{{title}}</h2>
+  <div md-dialog-content>
+    <md-input-container class="full-width">
+      <input mdInput type="text" placeholder="任务内容">
+    </md-input-container>
+    <!-- 任务等级 -->
+    <md-radio-group>
+      <md-radio-button *ngFor="let priority of priorities" [value]="priority.value">
+        {{priority.label}}
+      </md-radio-button>
+    </md-radio-group>
+    <!-- 任务截止日期 -->
+    <md-input-container class="full-width">
+      <input mdInput [mdDatepicker]="dueDatepicker" type="text" placeholder="任务截止日期">
+      <button type="button" mdSuffix [mdDatepickerToggle]="dueDatepicker"></button>
+    </md-input-container>
+    <md-datepicker #dueDatepicker></md-datepicker>
+    <!-- 提醒日期 -->
+    <md-input-container class="full-width">
+      <input mdInput [mdDatepicker]="reminderDatepicker" type="text" placeholder="提醒日期">
+      <button type="button" mdSuffix [mdDatepickerToggle]="reminderDatepicker"></button>
+    </md-input-container>
+    <md-datepicker #reminderDatepicker></md-datepicker>
+  </div>
+  <div md-dialog-actions>
+    <button type="button" md-raised-button color="primary" (click)="onClick()">保存</button>
+    <button type="button" md-button md-dialog-close>关闭</button>
+  </div>
+</form>

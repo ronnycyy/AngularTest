@@ -14,7 +14,13 @@ import {
   MdMenuModule,
   MdCheckboxModule,
   MdTooltipModule,
+  MdDatepickerModule,
+  MdRadioModule,
+  MdNativeDateModule,
+  MdSelectModule,
+  MdSidenavModule,
 } from '@angular/material';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 /**
@@ -38,6 +44,11 @@ import {
     MdMenuModule,
     MdCheckboxModule,
     MdTooltipModule,
+    MdDatepickerModule,
+    MdRadioModule,
+    MdNativeDateModule,
+    MdSelectModule,
+    MdSidenavModule,
   ],
   exports: [
     CommonModule,
@@ -54,7 +65,15 @@ import {
     MdMenuModule,
     MdCheckboxModule,
     MdTooltipModule,
+    MdDatepickerModule,
+    MdRadioModule,
+    MdNativeDateModule,
+    MdSelectModule,
+    MdSidenavModule,
   ],
-  declarations: []
+  entryComponents: [   //dialog组件要放到这个数组中
+    ConfirmDialogComponent
+  ],
+  declarations: [ConfirmDialogComponent]
 })
 export class SharedModule { }

@@ -10,16 +10,16 @@ md-icon.avatar {
 
 // 任务优先级
 .priority-normal {
-    // border-left: 3px solid #A6A6A6;
-    background-color: gray;
+    border-left: 3px solid #A6A6A6;
+    // background-color: gray;
 }
 .priority-important {
-    // border-left: 3px solid #FFAF38;
-    background-color: #FFAF38;
+    border-left: 3px solid #FFAF38;
+    // background-color: #FFAF38;
 }
 .priority-emergency {
-    // border-left: 3px solid red;
-    background-color: red;
+    border-left: 3px solid red;
+    // background-color: red;
 }
 
 // 表示项目已完成，划掉
