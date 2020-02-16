@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { NewProjectComponent } from '../new-project/new-project.component';
@@ -15,7 +15,8 @@ import { listAnimation } from '../../anims/list.anim';
   animations: [
     slideToRight,
     listAnimation,
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush     //侦查状态改变：使用OnPush策略（内部组件不更改，只有与它关联的组件更改时才改变状态）
 })
 export class ProjectListComponent implements OnInit {
 
@@ -37,7 +38,7 @@ export class ProjectListComponent implements OnInit {
   ];
 
   // 注入dialog service
-  constructor(private dialog: MdDialog) { }
+  constructor(private dialog: MdDialog, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -51,6 +52,7 @@ export class ProjectListComponent implements OnInit {
         {id: 3, name: '一个新项目', desc: '这是一个新项目', coverImg: 'assets/img/covers/11.jpg'}, 
         {id: 4, name: '又一个新项目', desc: '这是又一个新项目', coverImg: 'assets/img/covers/12.jpg'}, 
       ];   //添加新项目到项目列表
+      this.cd.markForCheck();   //在这个点上，来检查我   告诉angular在事件发生时主动检查这条路线，其他的你不用检查
     });
   }
 
@@ -67,6 +69,7 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       this.projects = this.projects.filter(p => p.id !== project.id);
+      this.cd.markForCheck();
     });
   }
 }

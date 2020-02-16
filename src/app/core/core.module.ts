@@ -21,6 +21,7 @@ import { AppRoutingModule } from '../app-routing.module';
 
 
 import 'hammerjs';
+import 'rxjs/add/operator/take';
 
 @NgModule({
   imports: [
@@ -39,6 +40,9 @@ import 'hammerjs';
     FooterComponent, 
     SidebarComponent,
     AppRoutingModule,    //AppModule中还需要路由模块，coreModule中需要带上
+  ],
+  providers: [
+    {provide: 'BASE_CONFIG', useValue: 'http://localhost:3000'},  //一旦放到这个池子里，它就变成一个单件
   ]
 })
 export class CoreModule {

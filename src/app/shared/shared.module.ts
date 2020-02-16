@@ -21,7 +21,7 @@ import {
   MdSidenavModule,
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-
+import { DirectiveModule } from '../directive/directive.module';
 
 /**
  * 1、把大家都需要的一些模块导入进来，再导出出去
@@ -49,6 +49,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -70,6 +71,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
+    DirectiveModule,
   ],
   entryComponents: [   //dialog组件要放到这个数组中
     ConfirmDialogComponent

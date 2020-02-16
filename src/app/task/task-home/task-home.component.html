@@ -3,6 +3,14 @@
   <!-- 每个类别的任务列表 -->
   <app-task-list
     class="list-container"
+    app-droppable
+    [dropTags]="['task-item', 'task-list']"
+    [dragEnterClass]="'drag-enter'"
+    [app-draggable]="true"
+    [dragTag]="'task-list'"
+    [draggedClass]="'drag-start'"
+    [dragData]="list"
+    (dropped)="handleMove($event, list)"
     *ngFor="let list of lists">
 
     <!-- 监听task-header组件发射出来的各种事件 -->

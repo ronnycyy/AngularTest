@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ReflectiveInjector, Inject } from '@angular/core';
 import { OverlayContainer } from '@angular/material';
 import { trigger, state, transition, style, animate, keyframes  } from '@angular/animations';
+import { environment } from '../../AngularTest/src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +43,30 @@ export class AppComponent {
   squareState: string;
   darkTheme = false;
 
-  constructor(private oc:OverlayContainer) {}
+  constructor(private oc:OverlayContainer, @Inject('BASE_CONFIG') config) {    //此处会去找'BASE_CONFIG'的provider，在core.module.ts中
+    console.log(config);   
+    // 依赖性注入实验
+    // const injector = ReflectiveInjector.resolveAndCreate([    //[] provide数组，构建依赖性池子
+    //   Person,   //等同于 { provide: Person, useClass: Person }, provide令牌，useClass或useFactory是填充依赖
+    //   { provide: Address, useFactory: () => {
+    //       if(environment.production)  {   //如果是生产环境
+    //         return new Address('北京', '北京', '朝阳区', 'xx街道xx号');
+    //       } else {   //开发环境
+    //         return new Address('西藏', '拉萨', 'xx区', 'xx街道xx号');
+    //       }
+    //     } 
+    //   },
+    //   { provide: Id, useFactory: () => {
+    //       return Id.getInstance('idcard');
+    //     } 
+    //   },
+    // ]);
+    // const childInjector = injector.resolveAndCreateChild([Person]);
+    // const person = injector.get(Person);
+    // const personFromChild = childInjector.get(Person);
+    // console.log(person === personFromChild);
+    // console.log(JSON.stringify(person));
+  }
 
   // 切换白天or黑夜模式
   switchTheme(dark) {
@@ -54,3 +78,33 @@ export class AppComponent {
     this.squareState = this.squareState === 'red' ? 'green' : 'red';
   }
 }
+
+// 依赖性注入实验
+// class Id {
+//   static getInstance(type: string): Id {
+//     return new Id();
+//   }
+// }
+
+// class Address {
+//   province: string;
+//   city: string;
+//   district: string;
+//   street: string;
+//   constructor(province, city, district, street) {
+//     this.province = province;
+//     this.city = city;
+//     this.district = district;
+//     this.street = street;
+//   }
+// }
+
+// class Person {
+//   id: Id;
+//   address: Address;
+//   constructor(@Inject(Id) id, @Inject(Address) address) {
+//     this.id = id;
+//     this.address = address;
+//   }
+// }
+
