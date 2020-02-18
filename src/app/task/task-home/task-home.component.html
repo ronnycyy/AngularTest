@@ -11,6 +11,7 @@
     [draggedClass]="'drag-start'"
     [dragData]="list"
     (dropped)="handleMove($event, list)"
+    [ngStyle]="{'order': list.order}"
     *ngFor="let list of lists">
 
     <!-- 监听task-header组件发射出来的各种事件 -->
@@ -20,6 +21,9 @@
     (moveAll)="launchCopyTaskDialog()"
     (delList)="launchConfirmDialog()"
     (onEditList)="launchEditListDialog()"></app-task-header>
+
+    <app-quick-task (quickTask)="handleQuickTask($event)"></app-quick-task>
+
     
     <!-- 具体的一个任务 -->
     <app-task-item

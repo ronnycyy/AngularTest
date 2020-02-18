@@ -18,7 +18,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';     //有了shar
 // 导入路由模块
 import { AppRoutingModule } from '../app-routing.module';
 
-
+import { ServicesModule } from '../services/services.module';
 
 import 'hammerjs';
 import 'rxjs/add/operator/take';
@@ -28,6 +28,7 @@ import 'rxjs/add/operator/take';
     HttpModule,
     SharedModule,
     AppRoutingModule,
+    ServicesModule.forRoot(),     //导入了ServicesModule
     BrowserAnimationsModule,
   ],
   declarations: [

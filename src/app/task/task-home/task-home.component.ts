@@ -23,6 +23,7 @@ export class TaskHomeComponent implements OnInit {
     {
       id: 1,
       name: '待办', 
+      order: 1,
       tasks: [
         {
           id: 1,
@@ -54,6 +55,7 @@ export class TaskHomeComponent implements OnInit {
     {
       id: 2,
       name: '进行中',
+      order: 2,
       tasks: [
         {
           id: 1,
@@ -151,10 +153,20 @@ export class TaskHomeComponent implements OnInit {
         break;
       case 'task-list':
         console.log('handling list');
+
+        // 交换source list 和 target list 的 order
+        const srcList = srcData.data;    //拖拽过来的列表
+        const tempOrder = srcList.order;
+        srcList.order = list.order;  //target list
+        list.order = tempOrder;
         break;
       default:
         break;
     }
+  }
+
+  handleQuickTask(desc: string) {
+    console.log(desc);
   }
 
 }

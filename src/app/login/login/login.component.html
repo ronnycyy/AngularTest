@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form, $event)">
   <!-- 登录卡片 -->
   <md-card>
     <md-card-header>
@@ -7,12 +7,14 @@
 
     <md-card-content>
       <md-input-container class="full-width">
-        <input mdInput type="text" placeholder="您的email">
+        <!-- 声明成表单控件 -->
+        <input mdInput type="text" placeholder="您的email" formControlName="email">
+        <md-error>{{ form.controls['email'].errors | json }}</md-error>
       </md-input-container>
       <md-input-container class="full-width">
-        <input mdInput type="password" placeholder="您的密码">
+        <input mdInput type="password" placeholder="您的密码" formControlName="password">
       </md-input-container>
-      <button md-raised-button type="button" color="primary" routerLink="/projects">登录</button>
+      <button md-raised-button color="primary" type="submit" [disabled]="!form.valid">登录</button>
     </md-card-content>
     
     <!-- action 一般放一些按钮和动作 -->
