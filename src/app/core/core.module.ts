@@ -43,7 +43,11 @@ import 'rxjs/add/operator/take';
     AppRoutingModule,    //AppModule中还需要路由模块，coreModule中需要带上
   ],
   providers: [
-    {provide: 'BASE_CONFIG', useValue: 'http://localhost:3000'},  //一旦放到这个池子里，它就变成一个单件
+    {
+      provide: 'BASE_CONFIG', useValue: {
+        uri: 'http://localhost:3000'
+      }
+    },  //一旦放到这个池子里，它就变成一个单件
   ]
 })
 export class CoreModule {
