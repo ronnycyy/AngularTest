@@ -23,6 +23,7 @@ import {
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
+import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 
 /**
  * 1、把大家都需要的一些模块导入进来，再导出出去
@@ -77,10 +78,14 @@ import { DirectiveModule } from '../directive/directive.module';
     MdSelectModule,
     MdSidenavModule,
     DirectiveModule,
+    ImageListSelectComponent,
   ],
   entryComponents: [   //dialog组件要放到这个数组中
     ConfirmDialogComponent
   ],
-  declarations: [ConfirmDialogComponent]
+  declarations: [
+    ConfirmDialogComponent, 
+    ImageListSelectComponent
+  ]
 })
 export class SharedModule { }

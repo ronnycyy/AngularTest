@@ -1,0 +1,34 @@
+<!-- 显示已选择的用户头像 -->
+<div>
+  <span>{{title}}</span>
+  <!-- 如果useSvgIcon为真，显示这个标签，否则显示imgSelect控制的标签 -->
+  <md-icon class="avatar" [svgIcon]="selected" *ngIf="useSvgIcon else imgSelect"></md-icon>
+  <ng-template #imgSelect>
+    <img [src]="selected" alt="image selected" class="cover">
+  </ng-template>
+  
+</div>
+
+
+<!-- 支持滚动 -->
+<div class="scroll-container">
+  <!-- 提供用户头像 -->
+  <md-grid-list [cols]="cols" [rowHeight]="rowHeight">
+    <md-grid-tile *ngFor="let item of items; let i = index">
+      <!-- 鼠标滑过头像要有效果 -->
+      <div class="image-container" (click)="onChange(i)">
+        <md-icon class="avatar" [svgIcon]="item" *ngIf="useSvgIcon else imgItem"></md-icon>
+        <ng-template #imgItem>
+          <img [src]="item" alt="image selected" ngStyle="{'width': itemWidth}">
+        </ng-template>
+        
+        <!-- 图片加蒙版，显示打√ -->
+        <div class="after">
+          <div class="zoom">
+            <md-icon>checked</md-icon>
+          </div>
+        </div>
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
