@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Quote } from '../domain/quote.model';
 
+import 'rxjs/add/operator/map'
+
 @Injectable()
 export class QuoteService {
     // 依赖注入：'BASE_CONFIG'
@@ -11,6 +13,7 @@ export class QuoteService {
     getQuote():Observable<Quote> {
         const uri = `${this.config.uri}/quote/${Math.floor(Math.random()*10)}`;    //随机生成api的id
         return this.http.get(uri)
+            .debug('quote: ')
             .map(res => res.json() as Quote);
     }
 }
