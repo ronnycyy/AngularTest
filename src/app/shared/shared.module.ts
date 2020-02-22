@@ -5,6 +5,7 @@ import {
   MdToolbarModule,
   MdIconModule, 
   MdButtonModule,
+  MdButtonToggleModule,
   MdCardModule,
   MdInputModule,
   MdListModule,
@@ -24,6 +25,7 @@ import {
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
+import { AgeInputComponent } from './age-input/age-input.component';
 
 /**
  * 1、把大家都需要的一些模块导入进来，再导出出去
@@ -38,6 +40,7 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     MdToolbarModule,
     MdIconModule,
     MdButtonModule,
+    MdButtonToggleModule,
     MdCardModule,
     MdInputModule,
     MdListModule,
@@ -62,6 +65,7 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     MdToolbarModule,
     MdIconModule,
     MdButtonModule,
+    MdButtonToggleModule,
     MdCardModule,
     MdInputModule,
     MdListModule,
@@ -79,13 +83,15 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     MdSidenavModule,
     DirectiveModule,
     ImageListSelectComponent,
+    AgeInputComponent,
   ],
   entryComponents: [   //dialog组件要放到这个数组中
     ConfirmDialogComponent
   ],
   declarations: [
     ConfirmDialogComponent, 
-    ImageListSelectComponent
+    ImageListSelectComponent, 
+    AgeInputComponent,
   ]
 })
 export class SharedModule { }

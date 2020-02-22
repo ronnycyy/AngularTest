@@ -44,7 +44,9 @@ export class AppComponent {
   darkTheme = false;
 
   constructor(private oc:OverlayContainer, @Inject('BASE_CONFIG') config) {    //此处会去找'BASE_CONFIG'的provider，在core.module.ts中
-    console.log(config);   
+    // console.log(config);  
+    
+    
     // 依赖性注入实验
     // const injector = ReflectiveInjector.resolveAndCreate([    //[] provide数组，构建依赖性池子
     //   Person,   //等同于 { provide: Person, useClass: Person }, provide令牌，useClass或useFactory是填充依赖

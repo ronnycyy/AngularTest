@@ -17,17 +17,23 @@ export class RegisterComponent implements OnInit {
     const img = `${this.avatarName}:svg-${Math.floor(Math.random() * 16).toFixed(0)}`
     const nums = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
     this.items = nums.map(d => `avatars:svg-${d}`);
+    // 表单控制组件声明
     this.form = this.fb.group({
       email: [],
       name: [],
       password: [],
       repeat: [],
-      avatar: [img]
+      avatar: [img],
+      dateOfBirth: ['1990-01-01']
     })
   }
 
   onSubmit({value, valid}, ev: Event) {
-    
+    ev.preventDefault();   //防止表单提交的默认行为
+    if(!valid) {   //如果表单验证未通过，进行进一步处理
+      return;
+    }
+    console.log(value);   //表单验证通过，把值打印出来
   }
 
 }
