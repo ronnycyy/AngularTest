@@ -5,4 +5,5 @@ export interface User {
     password: string;
     name: string;
     avatar: string;
+    projectIds: string[];    //用户参与的项目
 }

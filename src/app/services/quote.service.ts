@@ -11,7 +11,7 @@ export class QuoteService {
     constructor(private http: Http, @Inject('BASE_CONFIG') private config) {}
 
     getQuote():Observable<Quote> {
-        const uri = `${this.config.uri}/quote/${Math.floor(Math.random()*10)}`;    //随机生成api的id
+        const uri = `${this.config.uri}/quotes/${Math.floor(Math.random()*10)}`;    //随机生成api的id
         return this.http.get(uri)
             .debug('quote: ')
             .map(res => res.json() as Quote);

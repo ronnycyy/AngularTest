@@ -7,6 +7,7 @@ import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog
 
 import { slideToRight } from '../../anims/router.anim';
 import { listAnimation } from '../../anims/list.anim';
+import { ProjectService } from 'app/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -22,25 +23,17 @@ export class ProjectListComponent implements OnInit {
 
   @HostBinding('@routeAnim') state;
 
-  projects = [
-    {
-      "id": 1,
-      "name": "企业协作平台",
-      "desc": "这是一个企业内部项目",
-      "coverImg": "assets/img/covers/0.jpg"
-    },
-    {
-      "id": 2,
-      "name": "自动化测试项目",
-      "desc": "这是一个企业内部项目",
-      "coverImg": "assets/img/covers/1.jpg"
-    }
-  ];
+  projects = [];
 
   // 注入dialog service
-  constructor(private dialog: MdDialog, private cd: ChangeDetectorRef) { }
+  constructor(private dialog: MdDialog, private cd: ChangeDetectorRef, private service$: ProjectService) { }
 
   ngOnInit() {
+    this.service$.get("1").subscribe(projects => {
+      this.projects = projects;
+      console.log("获得项目列表：", this.projects);
+      this.cd.markForCheck();    //手动激活自动更改检测，防止项目一上来模板中没有数据
+    });   //取得某个成员的所有项目
   }
 
   // 打开新建项目对话框

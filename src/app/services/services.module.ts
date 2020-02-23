@@ -1,5 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { QuoteService } from './quote.service';
+import { ProjectService } from './project.service';
 
 @NgModule()
 export class ServicesModule {
@@ -7,7 +8,8 @@ export class ServicesModule {
     return {
       ngModule: ServicesModule,    //module所需的模块
       providers: [
-        QuoteService
+        QuoteService,
+        ProjectService
       ]
     }
   }

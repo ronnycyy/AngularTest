@@ -70,7 +70,7 @@ import '../utils/debug.util';
   providers: [
     {
       provide: 'BASE_CONFIG', useValue: {
-        uri: 'http://localhost:3000'
+        uri: 'http://localhost:3000'   
       }
     },  //一旦放到这个池子里，它就变成一个单件
   ]
