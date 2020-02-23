@@ -1,1 +1,35 @@
 GET http://localhost:3000/projects?members_like=2
+
+###
+GET http://localhost:3000/taskLists
+
+### 向服务器发送数据，增加数据
+POST http://localhost:3000/taskLists
+Content-Type: application/json
+
+{
+    "name": "list1",
+    "order": 1,
+    "projectId": "1"
+}
+
+###  增加/替换数据  会将整个对象的所有属性进行update
+PUT http://localhost:3000/taskLists/1
+Content-Type: application/json
+
+{
+    "name": "list2",
+    "order": 2,
+    "projectId": "2"
+}
+
+### 可以选择一些自己想要update的属性
+PATCH  http://localhost:3000/taskLists/1
+Content-Type: application/json
+
+{
+    "name": "list3"
+}
+
+###
+DELETE  http://localhost:3000/taskLists/1
