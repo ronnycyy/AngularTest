@@ -21,11 +21,16 @@ import {
   MdNativeDateModule,
   MdSelectModule,
   MdSidenavModule,
+  MdChipsModule,
+  MdTabsModule,
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { AgeInputComponent } from './age-input/age-input.component';
+import { ChipsListComponent } from './chips-list/chips-list.component';
+import { IdentityInputComponent } from './identity-input/identity-input.component';
+import { AreaListComponent } from './area-list/area-list.component';
 
 /**
  * 1、把大家都需要的一些模块导入进来，再导出出去
@@ -56,6 +61,8 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
+    MdChipsModule,
+    MdTabsModule,
     DirectiveModule,
   ],
   exports: [
@@ -81,9 +88,14 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
+    MdChipsModule,
+    MdTabsModule,
     DirectiveModule,
     ImageListSelectComponent,
     AgeInputComponent,
+    ChipsListComponent,
+    IdentityInputComponent, 
+    AreaListComponent,
   ],
   entryComponents: [   //dialog组件要放到这个数组中
     ConfirmDialogComponent
@@ -91,7 +103,10 @@ import { AgeInputComponent } from './age-input/age-input.component';
   declarations: [
     ConfirmDialogComponent, 
     ImageListSelectComponent, 
-    AgeInputComponent,
+    AgeInputComponent, 
+    ChipsListComponent, 
+    IdentityInputComponent, 
+    AreaListComponent,
   ]
 })
 export class SharedModule { }
