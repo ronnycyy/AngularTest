@@ -19,6 +19,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';     //有了shar
 import { AppRoutingModule } from '../app-routing.module';
 
 import { ServicesModule } from '../services/services.module';
+import { AppEffectsModule } from '../effects'
+import { AppStoreModule } from '../reducers';
 
 import 'hammerjs';
 
@@ -54,6 +56,8 @@ import '../utils/debug.util';
     SharedModule,
     AppRoutingModule,
     ServicesModule.forRoot(),     //导入了ServicesModule
+    AppStoreModule,
+    AppEffectsModule,
     BrowserAnimationsModule,
   ],
   declarations: [

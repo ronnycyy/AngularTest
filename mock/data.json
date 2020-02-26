@@ -40,6 +40,17 @@
       "roleIds": [
         1
       ]
+    },
+    {
+      "email": "yi@163.com",
+      "name": "yi",
+      "password": "123456",
+      "repeat": "123456",
+      "avatar": "avatars:svg-10",
+      "dateOfBirth": "1990-01-01",
+      "address": null,
+      "identity": null,
+      "id": "Ipd_CdPs"
     }
   ],
   "taskLists": [

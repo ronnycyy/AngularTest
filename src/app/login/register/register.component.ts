@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Form } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { extractInfo, getAddrByCode, isValidAddr } from '../../utils/identity.util';
 import { isValidDate } from 'app/utils/date.util';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import * as authActions from '../../actions/auth.action';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +18,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   items: string[];
   sub: Subscription;
   private readonly avatarName = 'avatars';
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store$: Store<fromRoot.State>) { }
 
   ngOnInit() {
     const img = `${this.avatarName}:svg-${Math.floor(Math.random() * 16).toFixed(0)}`
@@ -63,7 +66,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if(!valid) {   //如果表单验证未通过，进行进一步处理
       return;
     }
-    console.log(value);   //表单验证通过，把值打印出来
+    this.store$.dispatch(new authActions.RegisterAction(value));
   }
 
 }

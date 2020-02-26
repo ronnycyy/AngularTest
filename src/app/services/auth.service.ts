@@ -25,7 +25,6 @@ export class AuthService {
 
     // 注册
     register(user: User): Observable<Auth> {
-        user.id = null;
         const uri = `${this.config.uri}/${this.domain}`;
         return this.http
             .get(uri, {params: {'email': user.email}}) // 查到相同的email，说明已经注册
