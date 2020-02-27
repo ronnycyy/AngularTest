@@ -18,6 +18,11 @@ import { ProjectService } from 'app/services/project.service';
 import * as _ from 'lodash';
 import { Project } from 'app/domain';
 import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
+
+import * as fromRoot from '../../reducers';
+import { Observable } from 'rxjs';
+import * as actions from '../../actions/project.action';
 
 @Component({
   selector: 'app-project-list',
@@ -33,24 +38,24 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 
   @HostBinding('@routeAnim') state;
 
-  projects = [];
-  sub: Subscription;
+  projects$: Observable<Project[]>;
+  listAnim$: Observable<number>;
 
-  // 注入dialog service
-  constructor(private dialog: MdDialog, private cd: ChangeDetectorRef, private service$: ProjectService) { }
+  // 有了ngrx之后，我们不需要注入projectService了，而是要注入我们的store
+  constructor(
+    private dialog: MdDialog, 
+    private cd: ChangeDetectorRef,
+    private store$: Store<fromRoot.State>
+  ) { 
+    this.store$.dispatch(new actions.LoadAction(null));   //发射 “加载项目” 的Action
+    this.projects$ = this.store$.select(fromRoot.getProjects);
+    this.listAnim$ = this.projects$.map(p => p.length);
+  }
 
   ngOnInit() {
-    this.sub = this.service$.get("1").subscribe(projects => {
-      this.projects = projects;
-      console.log("获得项目列表：", this.projects);
-      this.cd.markForCheck();    //手动激活自动更改检测，防止项目一上来模板中没有数据
-    });   //取得某个成员的所有项目
   }
 
   ngOnDestroy() {
-    if(this.sub) {
-      this.sub.unsubscribe();
-    }
   }
 
   // 打开新建项目对话框
@@ -64,10 +69,8 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       .take(1)
       .filter(n => n)
       .map(val => ({...val, coverImg: this.buildImgSrc(val.coverImg)}))
-      .switchMap(v => this.service$.add(v))
       .subscribe(project => {
-        this.projects = [...this.projects, project];   //将新增的项目添加到项目列表中
-        this.cd.markForCheck();
+        this.store$.dispatch(new actions.AddAction(project));
       });
 
     // dialogRef.afterClosed().filter(n => n).subscribe(project => {
@@ -82,7 +85,8 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
 
   lauchInviteDialog() {
-    const dialogRef = this.dialog.open(InviteComponent, {data: {members: []}});   
+    const dialogRef = this.dialog.open(InviteComponent, {data: {members: []}});  
+    // this.store$.dispatch(new actions.SelectAction(project)); 
   }
 
   launchUpdateDialog(project: Project) {
@@ -94,11 +98,8 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       .take(1)
       .filter(n => n)
       .map(val => ({...val, id: project.id, coverImg: this.buildImgSrc(val.coverImg)}))
-      .switchMap(v => this.service$.update(v))
       .subscribe(project => {
-        const index = this.projects.map(p => p.id).indexOf(project.id);
-        this.projects = [...this.projects.slice(0, index), project, ...this.projects.slice(index + 1)]
-        this.cd.markForCheck();
+        this.store$.dispatch(new actions.UpdateAction(project));
       });
   }
 
@@ -107,10 +108,8 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed()
       .take(1)
       .filter(n => n)
-      .switchMap(_ => this.service$.del(project))
-      .subscribe(prj => {
-        this.projects = this.projects.filter(p => p.id !== prj.id);
-        this.cd.markForCheck();
+      .subscribe(_ => {
+        this.store$.dispatch(new actions.DeleteAction(project));
       });
   }
 

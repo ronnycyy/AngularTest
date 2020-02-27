@@ -77,7 +77,7 @@
       "id": "2",
       "name": "自动化测试项目",
       "desc": "这是一个企业内部项目",
-      "coverImg": "assets/img/covers/1.jpg",
+      "coverImg": "/assets/img/covers/1.jpg",
       "members": [
         "1"
       ]
@@ -95,10 +95,13 @@
       "id": "YYrvz97i"
     },
     {
-      "name": "test",
-      "desc": null,
-      "coverImg": "/assets/img/covers/19.jpg",
-      "id": "9ACKjm37"
+      "name": "pq",
+      "desc": "trtr",
+      "coverImg": "/assets/img/covers/22.jpg",
+      "members": [
+        "undefined"
+      ],
+      "id": "lDB4_B-P"
     }
   ],
   "quotes": [

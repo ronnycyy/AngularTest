@@ -8,6 +8,7 @@ import { createSelector } from 'reselect';
 
 import * as fromQuote from './quote.reducer';
 import * as fromAuth from './auth.reducer';
+import * as fromProject from './project.reducer';
 
 import { environment } from '../../../AngularTest/src/environments/environment';
 import { Auth } from 'app/domain/auth.model';
@@ -15,17 +16,20 @@ import { Auth } from 'app/domain/auth.model';
 
 export interface State {
   quote: fromQuote.State;
-  auth: Auth
+  auth: Auth;
+  projects: fromProject.State;
 };
 
 const initialState: State = {
   quote: fromQuote.initialState,
   auth: fromAuth.initialState,
+  projects: fromProject.initialState,
 };
 
 const reducers = {
   quote: fromQuote.reducer,
   auth: fromAuth.reducer,
+  projects: fromProject.reducer,
 };
 
 // 我们的所有reducer返回的都是state
@@ -38,8 +42,10 @@ export function reducer(state = initialState, action: {type: string; payload: an
 
 export const getQuoteState = (state: State) => state.quote;
 export const getAuthState = (state: State) => state.auth;
+export const getProjectState = (state: State) => state.projects;
 
 export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
+export const getProjects = createSelector(getProjectState, fromProject.getAll);
 
 @NgModule({
   imports: [

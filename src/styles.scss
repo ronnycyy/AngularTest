@@ -66,3 +66,9 @@ md-sidenav-container.myapp-dark-theme a:active {
     height: 100px;
     background-color: black;
 }
+
+app-project-list {
+    height: 87%;
+    overflow: scorll;
+    overflow-x: hidden;
+}
