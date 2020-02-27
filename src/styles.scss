@@ -72,3 +72,8 @@ app-project-list {
     overflow: scorll;
     overflow-x: hidden;
 }
+
+md-sidenav-container.myapp-dark-theme .logoutButton a {
+    color: white !important;
+    // background-color: #607d8b;
+}

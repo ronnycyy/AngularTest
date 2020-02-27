@@ -23,7 +23,6 @@ import { AppComponent } from './app.component';
     TaskModule,
     SharedModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

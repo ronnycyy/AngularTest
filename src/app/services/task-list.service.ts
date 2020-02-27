@@ -15,7 +15,6 @@ export class TaskListService {
 
     // 增加项目  用POST method
     add(taskList: TaskList): Observable<TaskList> {
-        taskList.id = null;
         const uri = `${this.config.uri}/${this.domain}`;
         return this.http
             .post(uri, JSON.stringify(taskList), {headers: this.headers})

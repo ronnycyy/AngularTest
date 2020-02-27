@@ -8,6 +8,7 @@ import { User } from 'app/domain';
 import { go } from '@ngrx/router-store';
 import { ProjectService } from 'app/services/project.service';
 import * as fromRoot from '../reducers';
+import * as listActions from '../actions/task-list.action';
 
 @Injectable()
 export class ProjectEffects {
@@ -64,6 +65,12 @@ export class ProjectEffects {
     .ofType(actions.ActionTypes.SELECT_PROJECT)
     .map(toPayload)
     .map(project => go([`/tasklists/${project.id}`])); 
+
+  @Effect()
+  loadTaskLists$: Observable<Action> = this.action$
+    .ofType(actions.ActionTypes.SELECT_PROJECT)
+    .map(toPayload)
+    .map(project => new listActions.LoadAction(project.id)); 
 
   // 邀请成员
   @Effect()
